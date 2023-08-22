@@ -252,7 +252,7 @@ end)
 RegisterNetEvent('qb-phone:server:jobcenter_JoinTheGroup', function(data)
     local src = source
     local player = QBCore.Functions.GetPlayer(src)
-
+    if EmploymentGroup[data.id].Users >= Config.groupMaxMember then TriggerClientEvent('QBCore:Notify', src, "Group is full", "error") return end
     if Players[src] then return TriggerClientEvent('QBCore:Notify', src, "You are already a part of a group!", "success") end
 
     local name = GetPlayerCharName(src)
